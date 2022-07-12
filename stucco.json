@@ -1,0 +1,66 @@
+{
+  "resolvers": {
+    "Query.objects": {
+      "data": {
+        "model": {
+          "name": "Database model",
+          "description": "Specify model name",
+          "value": "Object",
+          "required": true
+        }
+      },
+      "resolve": {
+        "name": "lib/Query/objects"
+      }
+    },
+    "Query.oneById": {
+      "data": {
+        "model": {
+          "name": "Database model",
+          "description": "Specify model name",
+          "value": "Object",
+          "required": true
+        }
+      },
+      "resolve": {
+        "name": "lib/Query/oneById"
+      }
+    },
+    "Mutation.create": {
+      "data": {
+        "model": {
+          "name": "Database model",
+          "description": "Specify model name",
+          "value": "Object",
+          "required": true
+        },
+        "sourceParameters": {
+          "name": "Get parameters from source",
+          "description": "Specify parameters that comes as source from previous resolver. Source must be an object, please specify its keys",
+          "value": ["username"]
+        }
+      },
+      "resolve": {
+        "name": "lib/Mutation/create"
+      }
+    },
+    "Mutation.update": {
+      "data": {
+        "model": {
+          "value": "Object"
+        }
+      },
+      "resolve": {
+        "name": "lib/Mutation/update"
+      }
+    },
+    "Mutation.delete": {
+      "data": {
+        "model": "Object"
+      },
+      "resolve": {
+        "name": "lib/Mutation/delete"
+      }
+    }
+  }
+}

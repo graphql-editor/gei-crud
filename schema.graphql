@@ -1,0 +1,32 @@
+
+
+type Object{
+	name: String
+	content: String
+	oneToOne: RelatedObject
+	oneToMany: [RelatedObject]
+}
+
+type Query{
+	objects: [Object!]
+	oneById: Object
+}
+
+type Mutation{
+	create: String
+	update: Boolean
+	delete: Boolean
+}
+
+type RelatedObject{
+	name: String
+}
+
+input ObjectInput{
+	name: String
+	content: String
+}
+schema{
+	query: Query,
+	mutation: Mutation
+}
