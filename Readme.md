@@ -1,12 +1,12 @@
-# GraphQL Editor Integration - Users
+# GraphQL Editor Integration - CRUD
 
-This integration allows basic username/password authentication with mongodb as a database
+This integration allows basic CRUD operations with mongodb as a database
 
 ## How to use in GraphQL Editor
 
 1. Select `Type` and `field` in stucco config
 2. Select `From integration`
-3. Select `gei-users/Query.login` for login or `gei-users/Mutation.register` for registration
+3. Select `gei-crud/Query.objects` for objects or `gei-crud/Mutation.create` for Creation
 
 ## How to use in code
 
@@ -21,12 +21,12 @@ Add this to your `stucco.json` file
   "resolvers": {
     "<Type>.<fieldName>": {
       "resolve": {
-        "name": "node_modules/gei-users/lib/Query/login"
+        "name": "node_modules/gei-crud/lib/Query/objects"
       }
     },
     "<Type>.<fieldName>": {
       "resolve": {
-        "name": "node_modules/gei-users/lib/Mutation/register"
+        "name": "node_modules/gei-crud/lib/Mutation/create"
       }
     }
   }
@@ -38,14 +38,20 @@ where `Type` and `fieldName` are defined for your schema, for example:
 ```json
 {
   "resolvers": {
-    "Query.login": {
+    "Query.posts": {
+      "data": {
+        "model": "Post"
+      },
       "resolve": {
-        "name": "node_modules/gei-users/lib/Query/login"
+        "name": "node_modules/gei-crud/lib/Query/objects"
       }
     },
-    "Mutation.register": {
+    "Mutation.createPost": {
+      "data": {
+        "model": "Post"
+      },
       "resolve": {
-        "name": "node_modules/gei-users/lib/Mutation/register"
+        "name": "node_modules/gei-crud/lib/Mutation/create"
       }
     }
   }
