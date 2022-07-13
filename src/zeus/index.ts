@@ -868,28 +868,31 @@ export type ValueTypes = {
     ["Object"]: AliasType<{
 	name?:boolean | `@${string}`,
 	content?:boolean | `@${string}`,
-	oneToOne?:ValueTypes["RelatedObject"],
-	oneToMany?:ValueTypes["RelatedObject"],
+	oneToOne?:ValueTypes["Object"],
+	oneToMany?:ValueTypes["Object"],
+	_id?:boolean | `@${string}`,
 		__typename?: boolean | `@${string}`
 }>;
 	["Query"]: AliasType<{
 	objects?:ValueTypes["Object"],
-	oneById?:ValueTypes["Object"],
+oneById?: [{	_id: string | Variable<any, string>},ValueTypes["Object"]],
 		__typename?: boolean | `@${string}`
 }>;
 	["Mutation"]: AliasType<{
-	create?:boolean | `@${string}`,
-	update?:boolean | `@${string}`,
-	delete?:boolean | `@${string}`,
+create?: [{	object: ValueTypes["Update"] | Variable<any, string>},boolean | `@${string}`],
+update?: [{	_id: string | Variable<any, string>,	object: ValueTypes["Update"] | Variable<any, string>},boolean | `@${string}`],
+delete?: [{	_id: string | Variable<any, string>},boolean | `@${string}`],
 		__typename?: boolean | `@${string}`
 }>;
-	["RelatedObject"]: AliasType<{
-	name?:boolean | `@${string}`,
-		__typename?: boolean | `@${string}`
-}>;
-	["ObjectInput"]: {
+	["Create"]: {
+	name: string | Variable<any, string>,
+	content?: string | undefined | null | Variable<any, string>,
+	owner?: string | undefined | null | Variable<any, string>
+};
+	["Update"]: {
 	name?: string | undefined | null | Variable<any, string>,
-	content?: string | undefined | null | Variable<any, string>
+	content?: string | undefined | null | Variable<any, string>,
+	owner?: string | undefined | null | Variable<any, string>
 }
   }
 
@@ -897,37 +900,41 @@ export type ResolverInputTypes = {
     ["Object"]: AliasType<{
 	name?:boolean | `@${string}`,
 	content?:boolean | `@${string}`,
-	oneToOne?:ResolverInputTypes["RelatedObject"],
-	oneToMany?:ResolverInputTypes["RelatedObject"],
+	oneToOne?:ResolverInputTypes["Object"],
+	oneToMany?:ResolverInputTypes["Object"],
+	_id?:boolean | `@${string}`,
 		__typename?: boolean | `@${string}`
 }>;
 	["Query"]: AliasType<{
 	objects?:ResolverInputTypes["Object"],
-	oneById?:ResolverInputTypes["Object"],
+oneById?: [{	_id: string},ResolverInputTypes["Object"]],
 		__typename?: boolean | `@${string}`
 }>;
 	["Mutation"]: AliasType<{
-	create?:boolean | `@${string}`,
-	update?:boolean | `@${string}`,
-	delete?:boolean | `@${string}`,
+create?: [{	object: ResolverInputTypes["Update"]},boolean | `@${string}`],
+update?: [{	_id: string,	object: ResolverInputTypes["Update"]},boolean | `@${string}`],
+delete?: [{	_id: string},boolean | `@${string}`],
 		__typename?: boolean | `@${string}`
 }>;
-	["RelatedObject"]: AliasType<{
-	name?:boolean | `@${string}`,
-		__typename?: boolean | `@${string}`
-}>;
-	["ObjectInput"]: {
+	["Create"]: {
+	name: string,
+	content?: string | undefined | null,
+	owner?: string | undefined | null
+};
+	["Update"]: {
 	name?: string | undefined | null,
-	content?: string | undefined | null
+	content?: string | undefined | null,
+	owner?: string | undefined | null
 }
   }
 
 export type ModelTypes = {
     ["Object"]: {
-		name?: string | undefined,
+		name: string,
 	content?: string | undefined,
-	oneToOne?: ModelTypes["RelatedObject"] | undefined,
-	oneToMany?: Array<ModelTypes["RelatedObject"] | undefined> | undefined
+	oneToOne?: ModelTypes["Object"] | undefined,
+	oneToMany?: Array<ModelTypes["Object"] | undefined> | undefined,
+	_id: string
 };
 	["Query"]: {
 		objects?: Array<ModelTypes["Object"]> | undefined,
@@ -938,22 +945,26 @@ export type ModelTypes = {
 	update?: boolean | undefined,
 	delete?: boolean | undefined
 };
-	["RelatedObject"]: {
-		name?: string | undefined
+	["Create"]: {
+	name: string,
+	content?: string | undefined,
+	owner?: string | undefined
 };
-	["ObjectInput"]: {
+	["Update"]: {
 	name?: string | undefined,
-	content?: string | undefined
+	content?: string | undefined,
+	owner?: string | undefined
 }
     }
 
 export type GraphQLTypes = {
     ["Object"]: {
 	__typename: "Object",
-	name?: string | undefined,
+	name: string,
 	content?: string | undefined,
-	oneToOne?: GraphQLTypes["RelatedObject"] | undefined,
-	oneToMany?: Array<GraphQLTypes["RelatedObject"] | undefined> | undefined
+	oneToOne?: GraphQLTypes["Object"] | undefined,
+	oneToMany?: Array<GraphQLTypes["Object"] | undefined> | undefined,
+	_id: string
 };
 	["Query"]: {
 	__typename: "Query",
@@ -966,17 +977,20 @@ export type GraphQLTypes = {
 	update?: boolean | undefined,
 	delete?: boolean | undefined
 };
-	["RelatedObject"]: {
-	__typename: "RelatedObject",
-	name?: string | undefined
+	["Create"]: {
+		name: string,
+	content?: string | undefined,
+	owner?: string | undefined
 };
-	["ObjectInput"]: {
+	["Update"]: {
 		name?: string | undefined,
-	content?: string | undefined
+	content?: string | undefined,
+	owner?: string | undefined
 }
     }
 
 
 type ZEUS_VARIABLES = {
-	["ObjectInput"]: ValueTypes["ObjectInput"];
+	["Create"]: ValueTypes["Create"];
+	["Update"]: ValueTypes["Update"];
 }

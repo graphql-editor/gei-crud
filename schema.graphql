@@ -1,30 +1,43 @@
 
 
 type Object{
-	name: String
+	name: String!
 	content: String
-	oneToOne: RelatedObject
-	oneToMany: [RelatedObject]
+	oneToOne: Object
+	oneToMany: [Object]
+	_id: String!
 }
 
 type Query{
 	objects: [Object!]
-	oneById: Object
+	oneById(
+		_id: String!
+	): Object
 }
 
 type Mutation{
-	create: String
-	update: Boolean
-	delete: Boolean
+	create(
+		object: Update!
+	): String
+	update(
+		_id: String!
+		object: Update!
+	): Boolean
+	delete(
+		_id: String!
+	): Boolean
 }
 
-type RelatedObject{
-	name: String
+input Create{
+	name: String!
+	content: String
+	owner: String
 }
 
-input ObjectInput{
+input Update{
 	name: String
 	content: String
+	owner: String
 }
 schema{
 	query: Query,

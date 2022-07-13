@@ -1,7 +1,26 @@
 /* eslint-disable */
 
 export const AllTypesProps: Record<string,any> = {
-	ObjectInput:{
+	Query:{
+		oneById:{
+
+		}
+	},
+	Mutation:{
+		create:{
+			object:"Update"
+		},
+		update:{
+			object:"Update"
+		},
+		delete:{
+
+		}
+	},
+	Create:{
+
+	},
+	Update:{
 
 	}
 }
@@ -10,8 +29,9 @@ export const ReturnTypes: Record<string,any> = {
 	Object:{
 		name:"String",
 		content:"String",
-		oneToOne:"RelatedObject",
-		oneToMany:"RelatedObject"
+		oneToOne:"Object",
+		oneToMany:"Object",
+		_id:"String"
 	},
 	Query:{
 		objects:"Object",
@@ -21,9 +41,6 @@ export const ReturnTypes: Record<string,any> = {
 		create:"String",
 		update:"Boolean",
 		delete:"Boolean"
-	},
-	RelatedObject:{
-		name:"String"
 	}
 }
 

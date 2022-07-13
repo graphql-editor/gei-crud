@@ -6,9 +6,10 @@ export const config = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'stucc
 
 export const getResolverData = <T>(input: FieldResolveInput) => {
   const { parentType, fieldName } = input.info;
-  const resolver = config.resolvers[`${parentType}.${fieldName}`];
+  const resolver = config.resolvers[`${getReturnTypeName(parentType)}.${fieldName}`];
   return resolver as ResolverConfig<T>;
 };
+
 export interface StuccoConfig {
   resolvers: Resolvers;
 }
@@ -19,7 +20,11 @@ export interface Resolvers {
 
 export interface ResolverConfig<T = unknown> {
   resolve: Resolve;
-  data?: T;
+  data?: {
+    [P in keyof T]: {
+      value: T[P];
+    };
+  };
 }
 
 export interface Resolve {
