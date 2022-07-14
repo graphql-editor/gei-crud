@@ -1,4 +1,3 @@
-import { Document, ObjectId, WithId } from 'mongodb';
 import { FieldResolveInput } from 'stucco-js';
 import { getResolverData } from './shared';
 

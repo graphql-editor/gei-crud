@@ -1,4 +1,3 @@
-import { ObjectId } from 'mongodb';
 import { FieldResolveInput } from 'stucco-js';
 import { prepareRelatedField, prepareRelatedModel } from '../data';
 import { DB } from '../db/mongo';

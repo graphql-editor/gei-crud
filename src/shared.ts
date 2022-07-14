@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { FieldResolveInput, TypeRef } from 'stucco-js';
+import { FieldResolveInput } from 'stucco-js';
 
 export const config = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'stucco.json'), 'utf-8')) as StuccoConfig;
 
@@ -31,6 +31,16 @@ export interface Resolve {
   name: string;
 }
 
+interface NamedTypeRef {
+  name: string;
+}
+interface NonNullTypeRef {
+  nonNull: TypeRef;
+}
+interface ListTypeRef {
+  list: TypeRef;
+}
+type TypeRef = NamedTypeRef | NonNullTypeRef | ListTypeRef | undefined;
 export const getReturnTypeName = (ref: TypeRef): string | undefined => {
   if (!ref) return;
   if ('nonNull' in ref || 'list' in ref) {
