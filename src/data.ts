@@ -1,5 +1,5 @@
 import { FieldResolveInput } from 'stucco-js';
-import { getResolverData } from './shared';
+import { getResolverData } from './shared.js';
 
 export const prepareSourceParameters = (input: FieldResolveInput) => {
   const source = input.source;

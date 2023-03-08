@@ -1,6 +1,6 @@
 import { FieldResolveInput } from 'stucco-js';
-import { prepareRelatedField, prepareRelatedModel } from '../data';
-import { DB } from '../db/mongo';
+import { prepareRelatedField, prepareRelatedModel } from '../data.js';
+import { DB } from '../db/mongo.js';
 
 export const handler = async (input: FieldResolveInput) =>
   DB().then((db) => {

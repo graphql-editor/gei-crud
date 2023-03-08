@@ -1,8 +1,8 @@
 import { ObjectId, OptionalId } from 'mongodb';
 import { FieldResolveInput } from 'stucco-js';
-import { prepareModel, prepareSourceParameters } from '../data';
-import { DB } from '../db/mongo';
-import { getReturnTypeName } from '../shared';
+import { prepareModel, prepareSourceParameters } from '../data.js';
+import { DB } from '../db/mongo.js';
+import { getReturnTypeName } from '../shared.js';
 
 export const handler = async (input: FieldResolveInput) =>
   DB().then((db) => {

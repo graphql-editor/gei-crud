@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 
-import { AllTypesProps, ReturnTypes, Ops } from './const';
+import { AllTypesProps, ReturnTypes, Ops } from './const.js';
 import fetch, { Response } from 'node-fetch';
 import WebSocket from 'ws';
 export const HOST = "http://localhost:8080/"
