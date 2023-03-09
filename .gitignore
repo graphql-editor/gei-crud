@@ -1,4 +1,6 @@
 .env
-/lib
+*/lib
 /node_modules
 .graphql-editor-auth.json
+.env.test
+

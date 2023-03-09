@@ -1,11 +1,3 @@
 {
-    "namespace": "editor-integrations",
-    "project": "crud",
-    "version": "latest",
-    "typingsEnv": "node",
-    "typingsHost": "http://localhost:8080/",
-    "typingsDir": "./src",
-    "backendSrc": "./src",
-    "backendLib": "./lib",
-    "schemaDir": "./"
+    "integrationPath": "src/index.ts"
 }

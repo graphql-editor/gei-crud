@@ -1,0 +1,64 @@
+{
+    "resolvers": {
+        "Query.objects": {
+            "name": "List objects",
+            "description": "List objects stored in database",
+            "data": {
+                "model": {
+                    "name": "Database model",
+                    "description": "Specify model name",
+                    "value": "Object",
+                    "required": true
+                },
+                "sourceFilterParameters": {
+                    "name": "Get only owned objects by parameters from source",
+                    "description": "Specify parameters that comes as source from previous resolver. Source must be an object, please specify its keys",
+                    "value": []
+                }
+            },
+            "resolve": {
+                "name": "Query.objects.handler"
+            }
+        },
+        "Mutation.update": {
+            "name": "Update object",
+            "description": "Update object stored in database. This resolver requires \"_id\" parameter on field and one \"input\" type parameter with optional fields",
+            "data": {
+                "model": {
+                    "name": "Database model",
+                    "description": "Specify model name",
+                    "value": "Object",
+                    "required": true
+                },
+                "sourceFilterParameters": {
+                    "name": "Get only owned objects by parameters from source",
+                    "description": "Specify parameters that comes as source from previous resolver. Source must be an object, please specify its keys",
+                    "value": []
+                }
+            },
+            "resolve": {
+                "name": "Mutation.update.handler"
+            }
+        },
+        "Mutation.create": {
+            "name": "Create object",
+            "description": "Create object from GraphQL Input. Connect this integration to field with one input param which holds creation data.",
+            "data": {
+                "model": {
+                    "name": "Database model",
+                    "description": "Specify model name",
+                    "value": "Object",
+                    "required": true
+                },
+                "sourceParameters": {
+                    "name": "Get parameters from source",
+                    "description": "Specify parameters that comes as source from previous resolver. Source must be an object, please specify its keys",
+                    "value": []
+                }
+            },
+            "resolve": {
+                "name": "Mutation.create.handler"
+            }
+        }
+    }
+}
